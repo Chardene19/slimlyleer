@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Slimly Wiskunde Ekstra Klasse vir Graad 4–11">
+  <title>Slimly | Wiskunde Ekstra Klasse</title>
+
+  <style>
+    :root {
+      --wine: #4b0e18;
+      --rose: #b8676d;
+      --pink: #e8b9bc;
+      --blush: #f8e9e9;
+      --cream: #fffaf8;
+      --dark: #292123;
+      --line: #e6c7c9;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    section { padding: 75px 0; }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,250,248,0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-content {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      color: #111;
+    }
+
+    .logo small {
+      display: block;
+      color: var(--rose);
+      font-family: cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0;
+      margin-top: -8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    /* HERO */
+    .hero {
+      padding: 90px 0 75px;
+      background:
+        radial-gradient(circle at 80% 25%, #f2d6d8 0, transparent 25%),
+        linear-gradient(135deg, #fffdfb, #f9eeee);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--rose);
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(4rem, 9vw, 7.5rem);
+      letter-spacing: 0.08em;
+      line-height: 0.85;
+      margin: 18px 0 8px;
+    }
+
+    .script {
+      font-family: cursive;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      color: var(--rose);
+    }
+
+    .hero p {
+      max-width: 620px;
+      font-size: 1.1rem;
+      margin: 25px 0;
+    }
+
+    .hero-card {
+      min-height: 390px;
+      border-radius: 28px;
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #f5dfe0, #fff);
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(75,14,24,0.12);
+    }
+
+    .math-board {
+      width: 90%;
+      background: #242022;
+      color: white;
+      border-radius: 18px;
+      padding: 35px;
+      transform: rotate(-3deg);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.22);
+    }
+
+    .math-board p {
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+      margin: 0 0 22px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      margin: 5px 8px 5px 0;
+      background: var(--wine);
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(75,14,24,0.18);
+    }
+
+    .button.light {
+      background: white;
+      color: var(--wine);
+      border: 1px solid var(--wine);
+    }
+
+    /* GENERAL */
+    .section-title {
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #71696a;
+      max-width: 700px;
+      margin: 0 auto 42px;
+    }
+
+    .strip {
+      background: linear-gradient(90deg, #f8eeee, #f1cdd0, #f8eeee);
+      padding: 18px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 8px 25px rgba(70,30,35,0.05);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #f0c8cb, #a7505a);
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* PRICING */
+    .pricing {
+      background: linear-gradient(180deg, #fff, #f8eeee);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .price-card {
+      text-align: center;
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--rose);
+    }
+
+    .price {
+      font-family: Georgia, serif;
+      color: var(--wine);
+      font-size: 2.8rem;
+      margin: 14px 0 4px;
+    }
+
+    .price-info {
+      color: var(--rose);
+      font-weight: bold;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+    }
+
+    .price-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .price-card li {
+      padding: 9px 0;
+      border-bottom: 1px solid #f0e6e6;
+    }
+
+    .payment-note {
+      margin-top: 30px;
+      text-align: center;
+      padding: 16px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+
+    /* INCLUDED */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-list li {
+      padding: 11px 0;
+      border-bottom: 1px solid #eee5e5;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--wine);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .highlight {
+      background: linear-gradient(145deg, #fff, #f7e5e6);
+    }
+
+    /* CONTRACT */
+    .contract-section {
+      background: var(--wine);
+      color: white;
+    }
+
+    .contract-section .section-title { color: white; }
+
+    .contract-section .section-subtitle { color: #f4dfe0; }
+
+    .contract-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 25px;
+      background: linear-gradient(135deg, white, #f7e7e8);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-item a {
+      color: var(--wine);
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #24191b;
+      color: #f5e7e7;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-links { display: none; }
+
+      section { padding: 55px 0; }
+
+      .hero { padding-top: 60px; }
+
+      .hero h1 { font-size: 4.3rem; }
+
+      .cards,
+      .pricing-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card { min-height: 310px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-content">
+      <div class="logo">
+        SLIMLY
+        <small>Slimmer leer, beter presteer.</small>
+      </div>
+
+      <div class="nav-links">
+        <a href="#hoekom">Hoekom Slimly?</a>
+        <a href="#pryse">Pryse</a>
+        <a href="#ingesluit">Ingesluit</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">WISKUNDE EKSTRA KLASSE • GRAAD 4–11</div>
+        <h1>SLIMLY</h1>
+        <div class="script">Slimmer leer, beter presteer. ♡</div>
+
+        <p>
+          Persoonlike Wiskunde-ondersteuning wat jou kind help om konsepte
+          regtig te verstaan, selfvertroue te bou en beter te presteer.
+        </p>
+
+        <a class="button" href="#kontak">Bespreek 'n klas</a>
+        <a class="button light" href="#pryse">Sien pryse</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="math-board">
+          <p>y = mx + c</p>
+          <p>a² + b² = c²</p>
+          <p>√x &nbsp;&nbsp; x = -b ± √(b² - 4ac)</p>
+          <p style="font-size:1rem;color:#efbfc2;margin-top:40px;">
+            Fokus. Werk hard. Slaag. ♡
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip">
+    ♡ JOU POTENSIAAL. JOU TOEKOMS. ONS MAAK DIT MOONTLIK. ♡
+  </div>
+
+  <section id="hoekom">
+    <div class="container">
+      <h2 class="section-title">Hoekom Slimly?</h2>
+      <p class="section-subtitle">
+        Ekstra klasse wat aangepas word by jou kind se behoeftes en leerdoelwitte.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">👩‍🎓</div>
+          <h3>PERSOONLIKE AANDAG</h3>
+          <p>Fokus op jou kind se unieke behoeftes en areas waar ekstra hulp nodig is.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">◎</div>
+          <h3>DUIDELIKE VERDUIDELIKINGS</h3>
+          <p>Wiskunde word op 'n eenvoudige en verstaanbare manier verduidelik.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💡</div>
+          <h3>KONSEPTE WAT SIN MAAK</h3>
+          <p>Ons fokus daarop dat leerders die konsepte regtig verstaan.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">↗</div>
+          <h3>BETER PRESTASIES</h3>
+          <p>Doelgerigte oefening en ondersteuning help met beter punte.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">◷</div>
+          <h3>BUIGSAME TYE</h3>
+          <p>Klasse kan gereël word volgens beskikbaarheid en jou pakket.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💻</div>
+          <h3>AANLYN VIA ZOOM</h3>
+          <p>Neem deel aan klasse vanuit die gemak van jou eie huis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pryse">
+    <div class="container">
+      <h2 class="section-title">Maandelikse Pakkette</h2>
+      <p class="section-subtitle">
+        Kies die hoeveelheid klasse wat die beste by jou kind pas.
+      </p>
+
+      <div class="pricing-grid">
+
+        <div class="card price-card">
+          <h3>ENKELKLAS</h3>
+          <div class="price">R200</div>
+          <div class="price-info">PER KLAS • 1 UUR</div>
+          <ul>
+            <li>1 uur klas</li>
+            <li>Persoonlike ondersteuning</li>
+            <li>Gerigte oefening</li>
+          </ul>
+          <a class="button" href="#kontak">Bespreek</a>
+        </div>
+
+        <div class="card price-card featured">
+          <h3>1 KLAS PER WEEK</h3>
+          <div class="price">R800</div>
+          <div class="price-info">4 KLASSE PER MAAND</div>
+          <ul>
+            <li>4 klasse per maand</li>
+            <li>R200 per klas</li>
+            <li>Google Classroom toegang</li>
+          </ul>
+          <a class="button" href="#kontak">Kies pakket</a>
+        </div>
+
+        <div class="card price-card">
+          <h3>2 KLASSE PER WEEK</h3>
+          <div class="price">R1 600</div>
+          <div class="price-info">8 KLASSE PER MAAND</div>
+          <ul>
+            <li>8 klasse per maand</li>
+            <li>R200 per klas</li>
+            <li>Google Classroom toegang</li>
+          </ul>
+          <a class="button" href="#kontak">Kies pakket</a>
+        </div>
+
+        <div class="card price-card">
+          <h3>3 KLASSE PER WEEK</h3>
+          <div class="price">R2 400</div>
+          <div class="price-info">12 KLASSE PER MAAND</div>
+          <ul>
+            <li>12 klasse per maand</li>
+            <li>R200 per klas</li>
+            <li>Google Classroom toegang</li>
+          </ul>
+          <a class="button" href="#kontak">Kies pakket</a>
+        </div>
+
+      </div>
+
+      <div class="payment-note">
+        ♡ <strong>Betaling vir die hele maand vooruit verseker jou plek.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="ingesluit">
+    <div class="container">
+      <h2 class="section-title">Wat is ingesluit?</h2>
+      <p class="section-subtitle">
+        Alles wat jou kind nodig het vir ekstra ondersteuning op een plek.
+      </p>
+
+      <div class="two-column">
+        <div class="card highlight">
+          <h3>JOU KIND KRY 'N GOOGLE CLASSROOM! 💻</h3>
+          <ul class="feature-list">
+            <li>Oefeninge wat gereeld gepost word</li>
+            <li>Ou vraestelle vir ekstra voorbereiding</li>
+            <li>Opsommings van belangrike konsepte</li>
+            <li>Hulpbronne altyd beskikbaar</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>EKSTRA ONDERSTEUNING</h3>
+          <ul class="feature-list">
+            <li>Persoonlike aandag</li>
+            <li>Wiskunde-ondersteuning</li>
+            <li>Duidelike verduidelikings</li>
+            <li>Hulp met huiswerk en moeilike konsepte</li>
+            <li>Aanlyn klasse via Zoom</li>
+            <li>Wiskunde vir Graad 4–11</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+<section id="kontak">
+    <div class="container">
+      <h2 class="section-title">Kontak my</h2>
+      <p class="section-subtitle">Klaar om jou Wiskunde te verbeter? ♡</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>👤 Naam</strong>
+          Chardene Van Aswegen
+        </div>
+
+        <div class="contact-item">
+          <strong>📞 Nommer</strong>
+          <a href="https://wa.me/27636955751" target="_blank">063 695 5751</a>
+        </div>
+
+        <div class="contact-item">
+          <strong>✉️ Gmail</strong>
+          <a href="mailto:slimlyleer@gmail.com">slimlyleer@gmail.com</a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a class="button" href="https://wa.me/27636955751?text=Hallo%20Chardene%2C%20ek%20stel%20belang%20in%20Slimly%20Ekstra%20Klasse." target="_blank">
+          WhatsApp Slimly
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    SLIMLY | SLIMMER LEER. BETER PRESTEER. ♡
+  </footer>
+
+</body>
+</html>
